@@ -3,9 +3,9 @@ export function seniorPercentage(
   state: "nutered" | "unnutered",
 ): number {
   if (state === "nutered" && weight < 10) return 3;
-  if (state === "nutered" && weight > 10) return 2;
+  if (state === "nutered" && weight >= 10) return 2;
   if (state === "unnutered" && weight < 10) return 3;
-  if (state === "unnutered" && weight > 10) return 2.5;
+  if (state === "unnutered" && weight >= 10) return 2;
 
   return 0;
 }

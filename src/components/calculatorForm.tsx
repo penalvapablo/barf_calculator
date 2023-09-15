@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { Ingredients, PetData } from "../utils/types";
+import type { Food, PetData } from "../utils/types";
 import { BarfCalulator } from "../utils/calculator";
 
 const CalculatorForm = () => {
@@ -11,7 +11,7 @@ const CalculatorForm = () => {
     state: "nutered",
   });
 
-  const [result, setResult] = useState<Ingredients>();
+  const [result, setResult] = useState<Food>();
 
   // TODO Accesibilidad  Asegúrate de que tu formulario sea accesible para todas las personas, incluidas aquellas que utilizan lectores de pantalla. Esto implica agregar atributos aria-label y aria-invalid en los campos que tienen errores, entre otras consideraciones.
   // TODO Manejo de Errores: Actualmente, estás mostrando un mensaje de error en la parte inferior del formulario cuando se produce un error. Esto es útil, pero sería aún mejor si pudieras resaltar los campos específicos que tienen errores y proporcionar mensajes de error junto a esos campos.
@@ -64,6 +64,7 @@ const CalculatorForm = () => {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(petData);
     // Aditional validation
     if (petData.age === 0 && petData.months === 0) {
       setErrorMessage("corregí la edad");
@@ -74,19 +75,20 @@ const CalculatorForm = () => {
       return;
     }
     setErrorMessage("");
-    const ingredients = BarfCalulator(petData);
+    const food = BarfCalulator(petData);
     setResult({
-      bone: ingredients.bone,
-      fiber: ingredients.fiber,
-      meat: ingredients.meat,
-      viscera: ingredients.viscera,
+      total: food.total,
+      bone: food.bone,
+      fiber: food.fiber,
+      meat: food.meat,
+      viscera: food.viscera,
     });
-    console.log(ingredients);
+    console.log(food);
   };
 
   return (
-    <div className="bg-purple-200 py-6">
-      <h2 className="pt-10  text-center text-2xl">Calculadora BARF</h2>
+    <div className="bg-purple-200 px-6  py-6">
+      <h2 className="pt-10   text-center text-2xl">Calculadora BARF</h2>
       <form
         onSubmit={handleFormSubmit}
         className="flex flex-col items-center gap-5 px-3 py-8  text-xl"
@@ -131,6 +133,7 @@ const CalculatorForm = () => {
             className="p-2"
             type="number"
             id="weight"
+            min={1}
             onChange={handleWeightChange}
           />
         </label>
@@ -149,18 +152,15 @@ const CalculatorForm = () => {
         <p className="py-20 text-center text-red-500">{errorMessage}</p>
       )}
       {result && (
-        <div className=" flex flex-col gap-2 text-2xl">
-          <p className="text-center text-amber-600">
-            {petData.name} debe comer:
+        <div className="flex flex-col gap-2 text-2xl">
+          <p className="text-amber-600">
+            {petData.name} debe comer {result.total}gr de alimento diarios
+            dividos en:
           </p>
-          <p className="text-center text-amber-600">
-            hueso carnoso: {result.bone}gr
-          </p>
-          <p className="text-center text-amber-600">carne: {result.meat}gr </p>
-          <p className="text-center text-amber-600">
-            viscera: {result.viscera}gr
-          </p>
-          <p className="text-center text-amber-600">fiber: {result.fiber}gr</p>
+          <p className="text-amber-600">huesos carnosos: {result.bone}gr</p>
+          <p className="text-amber-600">carne: {result.meat}gr </p>
+          <p className="text-amber-600">viscera: {result.viscera}gr</p>
+          <p className="text-amber-600">fiber: {result.fiber}gr</p>
         </div>
       )}
     </div>

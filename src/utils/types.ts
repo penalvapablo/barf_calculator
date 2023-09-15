@@ -6,7 +6,8 @@ export type PetData = {
   state: "nutered" | "unnutered";
 };
 
-export type Ingredients = {
+export type Food = {
+  total: number;
   bone: number;
   meat: number;
   viscera: number;
