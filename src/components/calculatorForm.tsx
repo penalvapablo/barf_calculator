@@ -19,6 +19,8 @@ const CalculatorForm = () => {
 
   // TODO const faltan campos validación
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [ageErrorMessage, setAgeErrorMessage] = useState<string>("");
+  const [weightErrorMessage, setWeightErrorMessage] = useState<string>("");
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newName = e.target.value;
@@ -67,14 +69,16 @@ const CalculatorForm = () => {
     console.log(petData);
     // Aditional validation
     if (petData.age === 0 && petData.months === 0) {
-      setErrorMessage("corregí la edad");
+      setAgeErrorMessage("completá los campos");
       return;
     }
+    setAgeErrorMessage("");
     if (petData.weight === 0) {
-      setErrorMessage("corregí el peso");
+      setWeightErrorMessage("corregí el peso");
       return;
     }
-    setErrorMessage("");
+    setWeightErrorMessage("");
+
     const food = BarfCalulator(petData);
     setResult({
       total: food.total,
@@ -103,12 +107,12 @@ const CalculatorForm = () => {
             onChange={handleNameChange}
           />
         </label>
+        <div className="mx-auto h-1 w-[80%] bg-black"></div>
         <p>Edad (puede ser aproximada)</p>
         <label className="flex items-center gap-4">
           Años:
           <input
             className="p-2"
-            required
             type="number"
             id="age"
             onChange={handleAgeChange}
@@ -117,19 +121,19 @@ const CalculatorForm = () => {
         <label className="flex items-center gap-4">
           Meses:
           <input
-            required
             className="p-2"
             type="number"
             id="months"
-            max={12}
-            min={2}
             onChange={handleMonthsChange}
           />
         </label>
+        {ageErrorMessage && (
+          <p className="py-2 text-center text-red-500">{ageErrorMessage}</p>
+        )}
+        <div className="mx-auto h-1 w-[80%] bg-black"></div>
         <label className="flex items-center gap-4">
           Peso (kg):
           <input
-            required
             className="p-2"
             type="number"
             id="weight"
@@ -137,6 +141,10 @@ const CalculatorForm = () => {
             onChange={handleWeightChange}
           />
         </label>
+        {weightErrorMessage && (
+          <p className="py-2 text-center text-red-500">{weightErrorMessage}</p>
+        )}
+        <div className="mx-auto h-1 w-[80%] bg-black"></div>
         <label className="flex items-center gap-4">
           Estado:
           <select id="state" onChange={handleStateChange}>
@@ -144,6 +152,7 @@ const CalculatorForm = () => {
             <option value="unnutered">No Castrado</option>
           </select>
         </label>
+        <div className="mx-auto h-1 w-[80%] bg-black"></div>
         <button type="submit" className="bg-red-300 p-3">
           Calcular
         </button>
