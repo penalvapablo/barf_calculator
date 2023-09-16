@@ -78,7 +78,7 @@ const CalculatorForm = () => {
 
     setAgeErrorMessage("");
     if (petData.weight === 0 || isNaN(petData.weight)) {
-      setWeightErrorMessage("corregí el peso");
+      setWeightErrorMessage("agregá el peso");
       return;
     }
     setWeightErrorMessage("");
@@ -95,99 +95,96 @@ const CalculatorForm = () => {
   };
 
   return (
-    <div className="bg-purple-200 px-6  py-6">
-      <h2 className="pt-10   text-center text-2xl">Calculadora BARF</h2>
-      <form
-        onSubmit={handleFormSubmit}
-        className="flex flex-col items-center gap-5 px-3 py-8  text-xl"
-      >
-        <label className="flex items-center gap-4">
-          Nombre:
-          <input
-            required
-            className="p-2"
-            type="text"
-            id="name"
-            onChange={handleNameChange}
-          />
-        </label>
-        <div className="mx-auto h-1 w-[80%] bg-black"></div>
-        <p>Edad (puede ser aproximada)</p>
-        <label className="flex items-center gap-4">
-          Años:
-          {/* <input
+    <form
+      onSubmit={handleFormSubmit}
+      className="flex flex-col items-center gap-5 px-3 py-8  text-xl"
+    >
+      <label className="flex items-center gap-4">
+        Nombre:
+        <input
+          required
+          className="p-2"
+          type="text"
+          id="name"
+          onChange={handleNameChange}
+        />
+      </label>
+      <div className="mx-auto h-1 w-[80%] bg-black"></div>
+      <p>Edad (puede ser aproximada)</p>
+      <label className="flex items-center gap-4">
+        Años:
+        {/* <input
             className="p-2"
             type="number"
             id="age"
             onChange={handleAgeChange}
           /> */}
-          <select name="age" id="age" onChange={handleAgeChange}>
-            <option value="puppy">menos de 1 año</option>
-            <option value="adult" selected>
-              entre 1 y 10 años
-            </option>
-            <option value="senior">mas de 10 años</option>
-          </select>
-        </label>
-        <label className="flex items-center gap-4">
-          Meses:
-          {/* <input
+        <select name="age" id="age" onChange={handleAgeChange}>
+          <option value="puppy">menos de 1 año</option>
+          <option value="adult" selected>
+            entre 1 y 10 años
+          </option>
+          <option value="senior">mas de 10 años</option>
+        </select>
+      </label>
+      <label className="flex items-center gap-4">
+        Meses:
+        {/* <input
             className="p-2"
             type="number"
             id="months"
             max={12}
             onChange={handleMonthsChange}
           /> */}
-          <select
-            name="months"
-            id="months"
-            onChange={handleMonthsChange}
-            disabled={isMonthFieldDisabled}
-          >
-            <option value=""></option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </label>
-        {ageErrorMessage && (
-          <p className="py-2 text-center text-red-500">{ageErrorMessage}</p>
-        )}
-        <div className="mx-auto h-1 w-[80%] bg-black"></div>
-        <label className="flex items-center gap-4">
-          Peso (kg):
-          <input
-            className="p-2"
-            type="number"
-            id="weight"
-            min={1}
-            onChange={handleWeightChange}
-          />
-        </label>
-        {weightErrorMessage && (
-          <p className="py-2 text-center text-red-500">{weightErrorMessage}</p>
-        )}
-        <div className="mx-auto h-1 w-[80%] bg-black"></div>
-        <label className="flex items-center gap-4">
-          Estado:
-          <select id="state" onChange={handleStateChange}>
-            <option value="nutered">Castrado</option>
-            <option value="unnutered">No Castrado</option>
-          </select>
-        </label>
-        <div className="mx-auto h-1 w-[80%] bg-black"></div>
-        <button type="submit" className="bg-red-300 p-3">
-          Calcular
-        </button>
-      </form>
+        <select
+          name="months"
+          id="months"
+          onChange={handleMonthsChange}
+          disabled={isMonthFieldDisabled}
+        >
+          <option value=""></option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+      </label>
+      {ageErrorMessage && (
+        <p className="py-2 text-center text-red-500">{ageErrorMessage}</p>
+      )}
+      <div className="mx-auto h-1 w-[80%] bg-black"></div>
+      <label className="flex items-center gap-4">
+        Peso (kg):
+        <input
+          className="p-2"
+          type="number"
+          id="weight"
+          min={1}
+          onChange={handleWeightChange}
+        />
+      </label>
+      {weightErrorMessage && (
+        <p className="py-2 text-center text-red-500">{weightErrorMessage}</p>
+      )}
+      <div className="mx-auto h-1 w-[80%] bg-black"></div>
+      <label className="flex items-center gap-4">
+        Estado:
+        <select id="state" onChange={handleStateChange}>
+          <option value="nutered">Castrado</option>
+          <option value="unnutered">No Castrado</option>
+        </select>
+      </label>
+      <div className="mx-auto h-1 w-[80%] bg-black"></div>
+      <button type="submit" className="bg-red-300 p-3">
+        Calcular
+      </button>
 
       {result && (
         <div className="flex flex-col gap-2 text-2xl text-amber-600">
@@ -201,7 +198,7 @@ const CalculatorForm = () => {
           <p className="">fiber: {result.fiber}gr</p>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 
