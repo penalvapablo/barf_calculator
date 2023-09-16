@@ -1,8 +1,8 @@
 export type PetData = {
   name: string;
-  age: number;
-  weight: number;
+  age: "puppy" | "adult" | "senior";
   months: number;
+  weight: number;
   state: "nutered" | "unnutered";
 };
 

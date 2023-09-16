@@ -17,9 +17,9 @@ export function BarfCalulator(petData: PetData): Food {
     viscera: 0,
   };
 
-  if (age < 1) foodPercentage = puppiesPercentage(months);
-  if (age >= 1 && age <= 10) foodPercentage = adultsPercentage(weight, state);
-  if (age > 10) foodPercentage = seniorPercentage(weight, state);
+  if (age === "puppy") foodPercentage = puppiesPercentage(months);
+  if (age === "adult") foodPercentage = adultsPercentage(weight, state);
+  if (age === "senior") foodPercentage = seniorPercentage(weight, state);
 
   console.log(foodPercentage);
   const food = weight * foodPercentage * 10;
