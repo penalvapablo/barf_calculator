@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import type { Food, PetData } from "../utils/types";
 import { BarfCalulator } from "../utils/calculator";
+import FoodDetails from "./FoodDetails";
 
 const CalculatorForm = () => {
   const [petData, setPetData] = useState<PetData>({
@@ -196,6 +197,7 @@ const CalculatorForm = () => {
           <p className="">carne: {result.meat}gr </p>
           <p className="">viscera: {result.viscera}gr</p>
           <p className="">fiber: {result.fiber}gr</p>
+          <FoodDetails />
         </div>
       )}
     </form>
