@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import type { Food, PetData } from "../utils/types";
-import { BarfCalulator } from "../utils/calculator";
+import type { Food, PetData } from "../../utils/types";
+import { BarfCalulator } from "../../utils/calculator";
 import FoodDetails from "./FoodDetails";
 
 const CalculatorForm = () => {
