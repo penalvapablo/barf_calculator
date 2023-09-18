@@ -1,14 +1,15 @@
 ---
 import CalculatorForm from "./CalculatorForm";
 import Warnings from "./Warnings";
+import Title from "../title.astro";
+
 
 
 ---
 
-<main class="bg-purple-200 px-6  py-6 max-w-lg mx-auto">
-  <h1 class="pt-10   text-center text-2xl">Calculadora BARF</h1>
-  <Warnings client:load/>
+<main class="bg-two px-6 py-8  mx-auto flex flex-col justify-center max-w-[22.5rem] rounded-2xl">
+  <Title text="Calculadora BARF" />
+  <!-- <Warnings client:load/> -->
   <CalculatorForm client:load />
-
 
 </main>

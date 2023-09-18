@@ -9,28 +9,29 @@ export function BarfCalulator(petData: PetData): Food {
 
   let foodPercentage = 0;
 
-  let ingredients: Food = {
-    total: 0,
-    bone: 0,
-    fiber: 0,
-    meat: 0,
-    viscera: 0,
-  };
+  // let ingredients: Food = {
+  //   total: 0,
+  //   bone: 0,
+  //   fiber: 0,
+  //   meat: 0,
+  //   viscera: 0,
+  //   liver: 0,
+  // };
 
   if (age === "puppy") foodPercentage = puppiesPercentage(months);
   if (age === "adult") foodPercentage = adultsPercentage(weight, state);
   if (age === "senior") foodPercentage = seniorPercentage(weight, state);
 
-  console.log(foodPercentage);
   const food = weight * foodPercentage * 10;
   const newIngredients = ingredientsCalc(food);
 
-  ingredients = {
+  const ingredients = {
     total: food,
     bone: newIngredients.bone,
     fiber: newIngredients.fiber,
     meat: newIngredients.meat,
     viscera: newIngredients.viscera,
+    liver: newIngredients.liver,
   };
 
   return ingredients;

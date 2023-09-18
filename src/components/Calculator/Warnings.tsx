@@ -18,7 +18,7 @@ const Warnings = () => {
     <>
       <button
         aria-label="leer advertencias"
-        className="relative mx-auto mt-4 block bg-slate-50 px-9 py-4 text-2xl"
+        className="relative mx-auto mt-6 rounded-2xl  bg-five px-9 py-4 font-text text-xl text-four"
         onClick={modalFn}
       >
         ¡Leer antes de usar!
@@ -27,28 +27,28 @@ const Warnings = () => {
         <>
           <div
             onClick={modalFn}
-            className="fixed left-1/2 top-1/2 z-10 h-screen w-screen translate-x-[-50%] translate-y-[-50%]  bg-black/50"
+            className="fixed left-1/2 top-1/2 z-10 h-screen w-screen translate-x-[-50%] translate-y-[-50%]  bg-one/50"
           >
-            <div className="fixed left-1/2 top-1/2 z-50 w-[80%]  translate-x-[-50%] translate-y-[-50%] bg-yellow-200 px-4 py-6">
+            <div className="fixed left-1/2 top-1/2 z-50 w-[90%] max-w-[22.5rem] translate-x-[-50%]  translate-y-[-50%] rounded-2xl bg-two px-4 py-6 font-text text-base text-one">
               <FontAwesomeIcon
                 icon={faCircleXmark}
-                className="bg-two text-four absolute right-[-12px] top-[-12px] z-10 h-8 rounded-full "
+                className="absolute right-[-12px] top-[-12px] z-10 h-8 rounded-full bg-two text-one "
               />
               <p>
-                - Esta calculadora está hecha para perros saludables que se
-                encuentran su peso. Si tu perro está fuera de su peso, deberías
-                consultar a la nutricionista para poder armar un plan específico
+                - Esta calculadora es para perros sanos con una condición
+                corporal correcta.
               </p>
+              <br />
               <p>
-                - Deberías probar un tiempo la dieta y ajustar las cantidades en
-                base a la evolución del animal. Hay factores como el nivel de
-                actividad, la raza, etc, que pueden variar los resultados.
+                - Presta atención a la salud y el bienestar de tu mascota. Si
+                notas cambios negativos, busca atención veterinaria de
+                inmediato.
               </p>
+              <br />
               <p>
-                - Si bien utilizar la calculadora es un buen punto de partida
-                (¡mas si tu perro come balanceado!) lo ideal sería acesorarte
-                con la nutricionista para poder armar un plan específico para tu
-                perro
+                - Cambiar a la Dieta BARF debe hacerse de manera gradual para
+                evitar problemas digestivos. Mezcla alimentos crudos con la
+                dieta actual y aumenta la proporción con el tiempo.
               </p>
             </div>
           </div>

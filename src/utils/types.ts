@@ -10,6 +10,7 @@ export type Food = {
   total: number;
   bone: number;
   meat: number;
+  liver: number;
   viscera: number;
   fiber: number;
 };

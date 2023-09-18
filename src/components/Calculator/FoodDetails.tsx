@@ -18,21 +18,21 @@ const FoodDetails = () => {
     <>
       <button
         aria-label="leer advertencias"
-        className="relative mx-auto mt-4 block bg-slate-50 px-9 py-4 text-2xl"
+        className="relative mx-auto mt-6 rounded-2xl  bg-five px-9 py-4 font-text text-xl text-four"
         onClick={modalFn}
       >
-        Ver detalle de cada ingrediente
+        Ver detalle de cada <br /> ingrediente
       </button>
       {modal && (
         <>
           <div
             onClick={modalFn}
-            className="fixed left-1/2 top-1/2 z-10 h-screen w-screen translate-x-[-50%] translate-y-[-50%]  bg-black/50"
+            className="bg-black/50 fixed left-1/2 top-1/2 z-10 h-screen w-screen translate-x-[-50%]  translate-y-[-50%]"
           >
-            <div className="fixed left-1/2 top-1/2 z-50 w-[80%]  translate-x-[-50%] translate-y-[-50%] bg-yellow-200 px-4 py-6">
+            <div className="bg-yellow-200 fixed left-1/2 top-1/2 z-50  w-[80%] translate-x-[-50%] translate-y-[-50%] px-4 py-6">
               <FontAwesomeIcon
                 icon={faCircleXmark}
-                className="bg-two text-four absolute right-[-12px] top-[-12px] z-10 h-8 rounded-full "
+                className="absolute right-[-12px] top-[-12px] z-10 h-8 rounded-full bg-two text-four "
               />
               <p>- Huesos carnoso: patamuslo, etc</p>
               <p>- Carne: pechuga, bondiola, etc</p>
