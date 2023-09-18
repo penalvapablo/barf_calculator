@@ -12,6 +12,8 @@
   "dependencies": {
     "@astrojs/react": "^3.0.2",
     "@astrojs/tailwind": "^5.0.0",
+    "@fontsource-variable/raleway": "^5.0.9",
+    "@fontsource/della-respira": "^5.0.12",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
