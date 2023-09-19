@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import type { Food, PetData } from "../../utils/types";
 import { BarfCalulator } from "../../utils/calculator";
-import FoodDetails from "./FoodDetails";
 
 const CalculatorForm = () => {
   const [petData, setPetData] = useState<PetData>({
@@ -26,7 +25,6 @@ const CalculatorForm = () => {
   // TODO Usabilidad y Experiencia del Usuario (UX): Puedes mejorar la experiencia del usuario agregando más información y validaciones en tiempo real. Por ejemplo, podrías mostrar un mensaje de error inmediato cuando el usuario ingrese un valor incorrecto en el campo "Peso" o "Años/Meses". Esto proporcionaría retroalimentación inmediata al usuario en lugar de esperar a que se envíe el formulario.
 
   // TODO const faltan campos validación
-  const [ageErrorMessage, setAgeErrorMessage] = useState<string>("");
   const [weightErrorMessage, setWeightErrorMessage] = useState<string>("");
 
   const isMonthFieldDisabled = petData.age !== "puppy";
@@ -76,12 +74,7 @@ const CalculatorForm = () => {
     e.preventDefault();
     console.log(petData);
     // Aditional validation
-    if (petData.age === "puppy" && petData.months === 0) {
-      setAgeErrorMessage("¿cuántos meses tiene?");
-      return;
-    }
 
-    setAgeErrorMessage("");
     if (petData.weight === 0 || isNaN(petData.weight)) {
       setWeightErrorMessage("agregá el peso");
       return;
@@ -102,20 +95,7 @@ const CalculatorForm = () => {
 
   const copyToClipboard = () => {
     const textToCopy = `${petData.name} debe comer ${result.total}gr de alimento diario divididos en:\n► huesos carnosos: ${result.bone}gr\n► carne: ${result.meat}gr\n► hígado: ${result.liver}gr\n► vísceras: ${result.viscera}gr\n► frutas y verduras: ${result.fiber}gr`;
-
-    // Crea un elemento de textarea invisible para copiar el texto
-    const textArea = document.createElement("textarea");
-    textArea.value = textToCopy;
-    document.body.appendChild(textArea);
-
-    // Selecciona y copia el texto
-    textArea.select();
-    document.execCommand("copy");
-
-    // Limpia y elimina el elemento de textarea
-    document.body.removeChild(textArea);
-
-    // Puedes mostrar una notificación o realizar cualquier otra acción aquí
+    navigator.clipboard.writeText(textToCopy);
     alert("El contenido ha sido copiado al portapapeles.");
   };
 
@@ -172,10 +152,6 @@ const CalculatorForm = () => {
             <option value="12">12</option>
           </select>
         </label>
-
-        {ageErrorMessage && (
-          <p className="text-red-500 py-2 text-center">{ageErrorMessage}</p>
-        )}
       </div>
       <div className="flex justify-between">
         <div className="flex w-[50%] flex-col gap-3">
@@ -211,24 +187,24 @@ const CalculatorForm = () => {
             onChange={handleWeightChange}
           />
         </label>
-
-        {weightErrorMessage && (
-          <p className="text-red-500 py-2 text-center">{weightErrorMessage}</p>
-        )}
       </div>
+      {weightErrorMessage && (
+        <p className="py-2 pr-2 text-center">{weightErrorMessage}</p>
+      )}
+
       <button
         type="submit"
-        className="relative mx-auto mt-6 rounded-2xl  bg-five px-9 py-4 font-text text-xl text-four"
+        className=" mx-auto  rounded-2xl  bg-five px-9 py-4 font-text text-xl text-four"
       >
         Calcular
       </button>
 
-      {result && (
+      {result.total !== 0 && (
         <>
-          <div className="text-amber-600 flex flex-col gap-2 text-lg">
+          <div className="text-amber-600 flex flex-col gap-2 pt-3 text-lg">
             <p className="">
-              {petData.name} debe comer {result.total}gr de alimento diario
-              dividos en:
+              <strong>{petData.name}</strong> debe comer {result.total}gr de
+              alimento diario dividos en:
             </p>
             <p className="">► huesos carnosos: {result.bone}gr</p>
             <p className="">► carne: {result.meat}gr </p>
@@ -243,7 +219,13 @@ const CalculatorForm = () => {
             </button>
           </div>
 
-          <FoodDetails />
+          <a
+            href="#precauciones"
+            aria-label="leer advertencias y detalles de ingredientes"
+            className="relative mx-auto mt-6 rounded-2xl   text-center font-text text-xl font-bold text-one underline"
+          >
+            Ver precauciones y detalle de cada ingrediente
+          </a>
         </>
       )}
     </form>

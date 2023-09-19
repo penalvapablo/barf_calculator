@@ -16,13 +16,14 @@ const FoodDetails = () => {
 
   return (
     <>
-      <button
-        aria-label="leer advertencias"
-        className="relative mx-auto mt-6 rounded-2xl  bg-five px-9 py-4 font-text text-xl text-four"
+      <a
+        href="#precauciones"
+        aria-label="leer advertencias y detalles de ingredientes"
+        className="relative mx-auto mt-6 rounded-2xl   text-center font-text text-xl font-bold text-one underline"
         onClick={modalFn}
       >
-        Ver detalle de cada <br /> ingrediente
-      </button>
+        Ver precauciones y detalle de cada ingrediente
+      </a>
       {modal && (
         <>
           <div
