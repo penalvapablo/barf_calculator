@@ -1,12 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Calculator from '../components/Calculator/Calculator.astro'
+import Layout from "../layouts/Layout.astro";
+import Calculator from "../components/Calculator/Calculator.astro";
+import Barf from "../components/Barf/BarfSection.astro";
+
+import "@fontsource/della-respira";
+import "@fontsource-variable/raleway";
 ---
 
 <Layout title="Welcome to Astro.">
+  <nav>
+    <ul class="flex gap-9 mb-8 w-fit mx-auto">
+      <li>
+        <a
+          href="#barf"
+          class="rounded-2xl bg-two px-5 py-2 font-text text-lg text-one font-medium"
+          >¿Qué es BARF?</a
+        >
+      </li>
+      <li>
+        <a
+          href="nutricionista"
+          class="rounded-2xl bg-two px-5 py-2 font-text text-lg text-one font-medium"
+          >Nutricionista</a
+        >
+      </li>
+    </ul>
+  </nav>
   <Calculator />
-    
- 
+  <Barf />
 </Layout>
 
 <style></style>
