@@ -1,6 +1,8 @@
 ---
 import Subtitle from "../subtitle.astro";
 import Title from "../title.astro";
+import { Image } from "astro:assets";
+import barfImg from "../../assets/barf-image.jpg";
 ---
 
 <section
@@ -8,6 +10,12 @@ import Title from "../title.astro";
   class="py-16 mt-20 bg-two px-[5%] font-text text-one font-medium"
 >
   <Title text="¿Qué es BARF?" />
+  <Image
+    src={barfImg}
+    alt="imagen de ejemplo Barf"
+    class="rounded-2xl mx-auto mt-8"
+    width={500}
+  />
   <div class="pt-10 max-w-2xl mx-auto">
     <!-- <p class="">
       ¿Te preocupa la salud y el bienestar de tus queridos amigos peludos?
@@ -83,7 +91,9 @@ import Title from "../title.astro";
       <p>
         - <strong>Freezado:</strong> Respetar los tiempos de freezados previos
         antes de ofrecer los alimentos crudos a tus peludos y siempre descongela
-        las porciones en heladera, nunca al aire libre!
+        las porciones en heladera, nunca al aire libre! Se requieren 3 días para
+        carne de pollo y vaca, 7 días para el pescado y 3 días para cordero y
+        chivito. No recomendamos cerdo crudo.
       </p>
     </li>
     <li>
@@ -120,34 +130,30 @@ import Title from "../title.astro";
   <ul class="pt-5 max-w-2xl mx-auto flex flex-col gap-4">
     <li>
       <p>
-        - <strong>Huesos Carnosos:</strong> Lorem ipsum dolor sit amet
-        consectetur, adipisicing elit. Perferendis aliquam aspernatur eum, iure
-        officia commodi voluptates? Impedit, sunt fugit excepturi commodi,
-        repellat placeat corrupti non inventore doloremque nesciunt, dolores ea.
+        - <strong>Huesos Carnosos:</strong> alas de pollo, muslo de pollo,
+        espinazo, rabo, cogotes de pollo, carcaza de pollo.
       </p>
     </li>
     <li>
       <p>
-        - <strong>Carne:</strong>Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Ipsum, suscipit veritatis? Inventore est maxime veniam
-        vitae sit accusamus nulla vero aperiam ipsum voluptates, fugit dolorum,
-        facere sunt. Odit, ipsum dolor.
+        - <strong>Carne:</strong> merluza bretola, cordero, chivito, gallina,
+        lengua, mollejas de pollo, carnaza, paleta, roast beef, aguja, marucha,
+        azotillo, carne chica de vaca, quijada de vaca, corazón, garrón, pechuga
+        de pollo, pata muslo de pollo.
       </p>
     </li>
     <li>
       <p>
-        - <strong>Visceras:</strong> Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Reprehenderit modi dolores laborum accusantium odit
-        voluptatem at atque minima doloremque! Nesciunt deleniti ea eum quas sit
-        quasi numquam ipsum, praesentium libero?
+        - <strong>Visceras:</strong> riñón, seso, bofe, pajarilla, criadilla,
+        páncreas.
       </p>
     </li>
     <li>
       <p>
-        - <strong>Frutas y verduras:</strong> Cambiar a la Dieta BARF debe
-        hacerse de manera gradual para evitar problemas digestivos. Mezcla
-        alimentos crudos con la dieta actual y aumenta la proporción con el
-        tiempo.
+        - <strong>Frutas y verduras:</strong> anco, zanahoria, calabaza,
+        cabutia. Recomendamos estas verduras para iniciar que son nobles y no
+        traen mayores inconvenientes, si quiere saber qué otras opciones tiene
+        puede consultarlo con su vete de confianza.
       </p>
     </li>
   </ul>
