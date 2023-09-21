@@ -95,8 +95,14 @@ const CalculatorForm = () => {
 
   const copyToClipboard = () => {
     const textToCopy = `${petData.name} debe comer ${result.total}gr de alimento diario divididos en:\n► huesos carnosos: ${result.bone}gr\n► carne: ${result.meat}gr\n► hígado: ${result.liver}gr\n► vísceras: ${result.viscera}gr\n► frutas y verduras: ${result.fiber}gr`;
-    navigator.clipboard.writeText(textToCopy);
-    alert("El contenido ha sido copiado al portapapeles.");
+    navigator.clipboard
+      .writeText(textToCopy)
+      .then(() => {
+        alert("El contenido ha sido copiado al portapapeles.");
+      })
+      .catch(() => {
+        alert("Error al copiar");
+      });
   };
 
   return (
