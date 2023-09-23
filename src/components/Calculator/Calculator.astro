@@ -2,14 +2,11 @@
 import CalculatorForm from "./CalculatorForm";
 import Warnings from "./Warnings";
 import Title from "../title.astro";
-
-
-
 ---
 
-<main class="bg-two px-6 py-8  mx-auto flex flex-col justify-center max-w-[22.5rem] rounded-2xl">
-  <Title text="Calculadora BARF" />
+<main
+  class="bg-two px-6 py-8 mx-auto flex flex-col justify-center max-w-[22.5rem] rounded-2xl"
+>
   <!-- <Warnings client:load/> -->
   <CalculatorForm client:load />
-
 </main>
