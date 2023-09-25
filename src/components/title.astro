@@ -1,11 +1,12 @@
 ---
 interface Props {
   text: string;
+  color: "one" | "two";
 }
 
-const { text } = Astro.props;
+const { text, color } = Astro.props;
 ---
 
-<h1 class="text-center font-title text-one text-5xl leading-[3.4rem]">
+<h1 class=`text-center font-title text-${color} text-5xl leading-[3.4rem] `>
   {text}
 </h1>
