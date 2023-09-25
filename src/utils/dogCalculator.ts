@@ -15,17 +15,17 @@ export function dogCalculator(petData: PetData): DogResult {
     if (months === 11 || months === 12) foodPercentage = 4;
   }
   if (age === "adult") {
-    if (state === "nutered" && weight < 10) foodPercentage = 3.5;
-    if (state === "nutered" && weight >= 10) foodPercentage = 2.5;
-    if (state === "unnutered" && weight < 10) foodPercentage = 4;
-    if (state === "unnutered" && weight >= 10) foodPercentage = 3;
+    if (state === "nutered" && weight < 10000) foodPercentage = 3.5;
+    if (state === "nutered" && weight >= 10000) foodPercentage = 2.5;
+    if (state === "unnutered" && weight < 10000) foodPercentage = 4;
+    if (state === "unnutered" && weight >= 10000) foodPercentage = 3;
   }
   if (age === "senior") {
-    if (weight < 10) foodPercentage = 3;
-    if (weight >= 10) foodPercentage = 2;
+    if (weight < 10000) foodPercentage = 3;
+    if (weight >= 10000) foodPercentage = 2;
   }
 
-  const food = weight * foodPercentage * 10;
+  const food = (weight * foodPercentage) / 100;
 
   const result = {
     name: name,

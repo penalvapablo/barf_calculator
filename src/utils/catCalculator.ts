@@ -23,7 +23,7 @@ export function catCalculator(petData: PetData): CatResult {
     foodPercentage = 3;
   }
 
-  const food = weight * foodPercentage * 10;
+  const food = (weight * foodPercentage) / 100;
 
   const ingredients = {
     name: name,

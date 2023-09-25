@@ -44,6 +44,16 @@ const CalculatorForm = () => {
 
   const isMonthFieldDisabled = petData.age !== "puppy";
 
+  const weightOptions = [];
+  for (let i = 0.5; i <= 100; i += 0.5) {
+    const grams = i * 1000; // Convierte kg a gramos
+    weightOptions.push(
+      <option key={grams} value={grams}>
+        {i} kg
+      </option>,
+    );
+  }
+
   const handleTypeChange = (selectedType: "dog" | "cat") => {
     setPetData({
       ...petData,
@@ -77,18 +87,19 @@ const CalculatorForm = () => {
     });
   };
 
-  const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newWeight = parseFloat(e.target.value); // Parsea la entrada como número decimal
-    setPetData({
-      ...petData,
-      weight: newWeight,
-    });
-  };
-
   const handleStateChange = (selectedState: "nutered" | "unnutered") => {
     setPetData({
       ...petData,
       state: selectedState,
+    });
+  };
+
+  const handleWeightChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newWeight = parseInt(e.target.value, 10);
+    console.log(newWeight);
+    setPetData({
+      ...petData,
+      weight: newWeight,
     });
   };
 
@@ -254,14 +265,14 @@ const CalculatorForm = () => {
           </div>
           <label className=" flex w-[45%]  flex-col gap-3">
             Peso (kg):
-            <input
-              className="h-10 rounded-2xl p-2  font-text text-base focus:outline-none focus:ring-2 focus:ring-five"
-              type="number"
+            <select
+              className="h-10 rounded-2xl p-2  font-mono text-base focus:outline-none focus:ring-2 focus:ring-five"
+              name="weight"
               id="weight"
-              max={99}
-              min={1}
               onChange={handleWeightChange}
-            />
+            >
+              {weightOptions}
+            </select>
           </label>
         </div>
         {weightErrorMessage && (
