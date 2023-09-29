@@ -157,14 +157,18 @@ const CalculatorForm = () => {
   console.log(catResult.total, dogResult.total);
 
   return (
-    <>
+    <main className="relative mx-auto flex h-[38rem] max-w-[22.5rem] flex-col rounded-2xl bg-two py-8">
       <h1 className="text-center font-title text-5xl leading-[3.4rem] text-one">
         Calculadora Barf
       </h1>
       {dogResult.total === 0 && catResult.total === 0 && (
         <form
           onSubmit={handleFormSubmit}
-          className="flex flex-col  gap-8 py-8 font-title text-xl text-one "
+          className={`absolute bottom-10 left-6 right-6 flex  flex-col gap-8 font-title text-xl text-one duration-500 ${
+            dogResult.total === 0 && catResult.total === 0
+              ? "visible opacity-100 "
+              : "invisible opacity-0"
+          }`}
         >
           <div className="flex items-end justify-between">
             <div className="flex w-[50%] flex-col ">
@@ -298,7 +302,7 @@ const CalculatorForm = () => {
         catResult={catResult}
         dogResult={dogResult}
       />
-    </>
+    </main>
   );
 };
 

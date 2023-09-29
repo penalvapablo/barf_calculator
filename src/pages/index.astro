@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Calculator from "../components/Calculator/Calculator.astro";
+import CalculatorForm from "../components/Calculator/CalculatorForm";
 import Barf from "../components/Barf/BarfSection.astro";
 import Nutritionist from "../components/Nutritionist/NutritionistSection.astro";
 import Footer from "../components/Footer/Footer.astro";
@@ -11,7 +11,7 @@ import "@fontsource-variable/raleway";
 
 <Layout title="Calculadora BARF.">
   <nav>
-    <ul class="flex gap-9 mb-8 w-fit mx-auto">
+    <ul class="flex gap-9 mb-8 w-fit mx-auto flex-wrap justify-center">
       <li>
         <a
           href="#barf"
@@ -28,7 +28,7 @@ import "@fontsource-variable/raleway";
       </li>
     </ul>
   </nav>
-  <Calculator />
+  <CalculatorForm client:load />
   <Barf />
   <Nutritionist />
   <Footer />
