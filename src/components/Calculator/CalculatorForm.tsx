@@ -154,142 +154,150 @@ const CalculatorForm = () => {
       });
     }
   };
+  console.log(catResult.total, dogResult.total);
 
   return (
     <>
       <h1 className="text-center font-title text-5xl leading-[3.4rem] text-one">
         Calculadora Barf
       </h1>
-      <form
-        onSubmit={handleFormSubmit}
-        className="flex flex-col  gap-8 py-8 font-title text-xl text-one "
-      >
-        <div className="flex items-end justify-between">
-          <div className="flex w-[50%] flex-col ">
-            <div className=" rounded-2xl bg-four p-1 text-base">
-              <button
-                type="button"
-                onClick={() => handleTypeChange("dog")}
-                className={`w-[50%] rounded-xl p-1 text-center ${
-                  petData.type === "dog" ? "bg-three" : ""
-                }`}
-              >
-                Perro
-              </button>
-              <button
-                type="button"
-                onClick={() => handleTypeChange("cat")}
-                className={`w-[50%] rounded-xl p-1 text-center ${
-                  petData.type === "cat" ? "bg-three" : ""
-                }`}
-              >
-                Gato
-              </button>
-            </div>
-          </div>
-          <label className="flex w-[45%]  flex-col gap-3">
-            Nombre:
-            <input
-              required
-              className="w-full rounded-2xl p-2 font-text text-base focus:outline-none focus:ring-2 focus:ring-five"
-              type="text"
-              maxLength={10}
-              id="name"
-              onChange={handleNameChange}
-            />
-          </label>
-        </div>
-        <div className="flex justify-between">
-          <label className="flex w-[50%] flex-col gap-3">
-            Edad:
-            <select
-              className="h-10 rounded-2xl  py-2 pl-2 font-text text-base focus:outline-none focus:ring-2 focus:ring-five"
-              name="age"
-              id="age"
-              defaultValue="adult"
-              onChange={handleAgeChange}
-            >
-              <option value="puppy">menos de 1 año</option>
-              <option value="adult">entre 1 y 10 años</option>
-              <option value="senior">mas de 10 años</option>
-            </select>
-          </label>
-          <label className="flex w-[45%]  flex-col gap-3">
-            Meses:
-            <select
-              name="months"
-              id="months"
-              className="h-10 rounded-2xl p-2  font-text text-base focus:outline-none focus:ring-2 focus:ring-five"
-              onChange={handleMonthsChange}
-              disabled={isMonthFieldDisabled}
-            >
-              <option value=""></option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-          </label>
-        </div>
-
-        <div className="flex justify-between">
-          <div className="flex w-[50%] flex-col gap-3">
-            Castrado:
-            <div className=" rounded-2xl bg-four p-1 text-base">
-              <button
-                type="button"
-                onClick={() => handleStateChange("nutered")}
-                className={`w-[50%] rounded-xl p-1 text-center ${
-                  petData.state === "nutered" ? "bg-three" : ""
-                }`}
-              >
-                Si
-              </button>
-              <button
-                type="button"
-                onClick={() => handleStateChange("unnutered")}
-                className={`w-[50%] rounded-xl p-1 text-center ${
-                  petData.state === "unnutered" ? "bg-three" : ""
-                }`}
-              >
-                No
-              </button>
-            </div>
-          </div>
-          <label className=" flex w-[45%]  flex-col gap-3">
-            Peso (kg):
-            <select
-              className="h-10 rounded-2xl p-2  font-mono text-base focus:outline-none focus:ring-2 focus:ring-five"
-              name="weight"
-              id="weight"
-              onChange={handleWeightChange}
-            >
-              {weightOptions}
-            </select>
-          </label>
-        </div>
-        {weightErrorMessage && (
-          <p className="py-2 pr-2 text-center">{weightErrorMessage}</p>
-        )}
-        {monthsErrorMessage && (
-          <p className="py-2 pr-2 text-center">{monthsErrorMessage}</p>
-        )}
-
-        <button
-          type="submit"
-          className=" mx-auto  rounded-2xl  bg-five px-9 py-4 font-text text-xl text-four"
+      {dogResult.total === 0 && catResult.total === 0 && (
+        <form
+          onSubmit={handleFormSubmit}
+          className="flex flex-col  gap-8 py-8 font-title text-xl text-one "
         >
-          Calcular
-        </button>
-      </form>
-      <CalculatorResult catResult={catResult} dogResult={dogResult} />
+          <div className="flex items-end justify-between">
+            <div className="flex w-[50%] flex-col ">
+              <div className=" rounded-2xl bg-four p-1 text-base">
+                <button
+                  type="button"
+                  onClick={() => handleTypeChange("dog")}
+                  className={`w-[50%] rounded-xl p-1 text-center ${
+                    petData.type === "dog" ? "bg-three" : ""
+                  }`}
+                >
+                  Perro
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleTypeChange("cat")}
+                  className={`w-[50%] rounded-xl p-1 text-center ${
+                    petData.type === "cat" ? "bg-three" : ""
+                  }`}
+                >
+                  Gato
+                </button>
+              </div>
+            </div>
+            <label className="flex w-[45%]  flex-col gap-3">
+              Nombre:
+              <input
+                required
+                className="w-full rounded-2xl p-2 font-text text-base focus:outline-none focus:ring-2 focus:ring-five"
+                type="text"
+                maxLength={10}
+                id="name"
+                onChange={handleNameChange}
+              />
+            </label>
+          </div>
+          <div className="flex justify-between">
+            <label className="flex w-[50%] flex-col gap-3">
+              Edad:
+              <select
+                className="h-10 rounded-2xl  py-2 pl-2 font-text text-base focus:outline-none focus:ring-2 focus:ring-five"
+                name="age"
+                id="age"
+                defaultValue="adult"
+                onChange={handleAgeChange}
+              >
+                <option value="puppy">menos de 1 año</option>
+                <option value="adult">entre 1 y 10 años</option>
+                <option value="senior">mas de 10 años</option>
+              </select>
+            </label>
+            <label className="flex w-[45%]  flex-col gap-3">
+              Meses:
+              <select
+                name="months"
+                id="months"
+                className="h-10 rounded-2xl p-2  font-text text-base focus:outline-none focus:ring-2 focus:ring-five"
+                onChange={handleMonthsChange}
+                disabled={isMonthFieldDisabled}
+              >
+                <option value=""></option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </label>
+          </div>
+
+          <div className="flex justify-between">
+            <div className="flex w-[50%] flex-col gap-3">
+              Castrado:
+              <div className=" rounded-2xl bg-four p-1 text-base">
+                <button
+                  type="button"
+                  onClick={() => handleStateChange("nutered")}
+                  className={`w-[50%] rounded-xl p-1 text-center ${
+                    petData.state === "nutered" ? "bg-three" : ""
+                  }`}
+                >
+                  Si
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleStateChange("unnutered")}
+                  className={`w-[50%] rounded-xl p-1 text-center ${
+                    petData.state === "unnutered" ? "bg-three" : ""
+                  }`}
+                >
+                  No
+                </button>
+              </div>
+            </div>
+            <label className=" flex w-[45%]  flex-col gap-3">
+              Peso (kg):
+              <select
+                className="h-10 rounded-2xl p-2  font-mono text-base focus:outline-none focus:ring-2 focus:ring-five"
+                name="weight"
+                id="weight"
+                onChange={handleWeightChange}
+              >
+                {weightOptions}
+              </select>
+            </label>
+          </div>
+          {weightErrorMessage && (
+            <p className="py-2 pr-2 text-center">{weightErrorMessage}</p>
+          )}
+          {monthsErrorMessage && (
+            <p className="py-2 pr-2 text-center">{monthsErrorMessage}</p>
+          )}
+
+          <button
+            type="submit"
+            className=" mx-auto  rounded-2xl  bg-five px-9 py-4 font-text text-xl text-four"
+          >
+            Calcular
+          </button>
+        </form>
+      )}
+      <CalculatorResult
+        setCatResult={setCatResult}
+        setDogResult={setDogResult}
+        catResult={catResult}
+        dogResult={dogResult}
+      />
     </>
   );
 };

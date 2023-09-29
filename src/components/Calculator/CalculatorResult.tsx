@@ -3,11 +3,18 @@ import { copyToClipboard } from "../../utils/copyToClipboard";
 import type { DogResult, CatResult } from "../../utils/types";
 
 type ResultProps = {
+  setCatResult: React.Dispatch<React.SetStateAction<CatResult>>;
+  setDogResult: React.Dispatch<React.SetStateAction<DogResult>>;
   catResult: CatResult;
   dogResult: DogResult;
 };
 
-const Result = ({ catResult, dogResult }: ResultProps) => {
+const Result = ({
+  catResult,
+  dogResult,
+  setCatResult,
+  setDogResult,
+}: ResultProps) => {
   return (
     <>
       {dogResult.total !== 0 && (
@@ -56,14 +63,27 @@ const Result = ({ catResult, dogResult }: ResultProps) => {
             <p className="">► hígado: {catResult.liver}gr </p>
             <p className="">► vísceras: {catResult.viscera}gr</p>
             <p className="">► frutas y verduras: {catResult.fiber}gr</p>
-            <button
-              onClick={() => {
-                copyToClipboard(dogResult, catResult);
-              }}
-              className="w-fit rounded-2xl  bg-five px-4 py-2 font-text text-xl text-four"
-            >
-              Copiar
-            </button>
+            <div>
+              <button
+                onClick={() => {
+                  copyToClipboard(dogResult, catResult);
+                }}
+                aria-label="Copiar resultado"
+                className="w-fit rounded-2xl  bg-five px-4 py-2 font-text text-xl text-four"
+              >
+                Copiar
+              </button>
+              <button
+                onClick={() => {
+                  setCatResult({ ...catResult, total: 0 });
+                  setDogResult({ ...dogResult, total: 0 });
+                }}
+                aria-label="Volver a calcular"
+                className="w-fit rounded-2xl  bg-five px-4 py-2 font-text text-xl text-four"
+              >
+                Volver a calcular
+              </button>
+            </div>
           </div>
 
           <a
